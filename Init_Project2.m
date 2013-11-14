@@ -2,12 +2,17 @@
 %%% Labskelett för Projekt2      %%%
 %%% TSFS01 - Fordonssystem       %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+clear all;
+close all;
+load turbomap;
+load TqEvsNeMAP;
+load grupp1_wgstep;
+clc;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      Sätter upp turbomotordata med antaganden     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Läs in modellparametrar från Projekt1 för att få basmotorn alla parametrar
-run ./../../Projekt1/Projekt1AssistentKod/Init_Project1.m;
+%run Init_Project1.m;
 % Många av modellparametrarna har samma värden som i Projekt1, exempelvis:
 %
 % V_em, V_im, V_es, PI_bl, r_c
@@ -46,17 +51,17 @@ wg_REF_manual = 0; wgINI = 100; wgEND = wgINI; wgST=30;
 pedPos_manual = 0; pedINI = 0.2; pedEND = 1.0; pedST=30;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Delmodell 1                    %%
+%% Compressormodell               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Delmodell 2                    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% o.s.v..
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Turbinmodell                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Nedanstående kommer att behöva ändras. Står endast med för att få ett simulerbart skal!!!
+%% Nedanstående kommer att behöva ändras. Står endast med för att få ett simulerbart skal!%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 KpThr = 1e-6; % Throttle controller feedback setup
 TiThr = 0.1;
