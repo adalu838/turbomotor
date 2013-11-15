@@ -6,7 +6,7 @@ clear all;
 close all;
 load turbomap;
 load TqEvsNeMAP;
-load grupp1_wgstep;
+load grupp2_wastegate;
 clc;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      Sätter upp turbomotordata med antaganden     %%
@@ -45,20 +45,23 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 N_e_manual = 0; N_e_step = 1; NINI = 2000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 0; alphaINI = 0.0; alphaEND = alphaINI;
 wg_REF_manual = 0; wgINI = 100; wgEND = wgINI; wgST=30;
 pedPos_manual = 0; pedINI = 0.2; pedEND = 1.0; pedST=30;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Compressormodell               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%% Compressormodell %%
+%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%
+%% Turbinmodell %%
+%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Turbinmodell                   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Intercoolermodell %%
+%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Nedanstående kommer att behöva ändras. Står endast med för att få ett simulerbart skal!%%
