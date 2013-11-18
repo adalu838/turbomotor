@@ -14,7 +14,7 @@ load turboMap; clc;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Lï¿½s in modellparametrar frï¿½n Projekt1 fï¿½r att fï¿½ basmotorn alla parametrar
 run Init_Project1.m;
-% Mï¿½nga av modellparametrarna har samma vï¿½rden som i Projekt1, exempelvis:
+% Mï¿½nga av modellparametrarna har samma vï¿½rden som i Projekt1, exempelvis
 %
 % V_em, V_im, V_es, PI_bl, r_c
 %
@@ -46,6 +46,7 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 N_e_manual = 0; N_e_step = 1; NINI = 2000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 0; alphaINI = 0.0; alphaEND = alphaINI;
 wg_REF_manual = 0; wgINI = 100; wgEND = wgINI; wgST=30;
@@ -122,14 +123,18 @@ plot(reshape(WcCorr,7,5),reshape(eta_c_model,7,5),'r--*');
 T_ref = comp.TCref;
 p_ref = comp.pCref;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Delmodell 2                    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% o.s.v..
+%%%%%%%%%%%%%%%%%%
+%% Turbinmodell %%
+%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Nedanstï¿½ende kommer att behï¿½va ï¿½ndras. Stï¿½r endast med fï¿½r att fï¿½ ett simulerbart skal!!!
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Intercoolermodell %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Nedanstående kommer att behöva ändras. Står endast med för att få ett simulerbart skal!%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 KpThr = 1e-6; % Throttle controller feedback setup
 TiThr = 0.1;
