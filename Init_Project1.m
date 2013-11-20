@@ -129,6 +129,9 @@ B(remove) = [];
 a_thr(remove) = [];
 
 X = A\B;
+a_1 = X(1);
+a_2 = X(2);
+a_3 = X(3);
 
 alfa_model = 0:1/length(stora_pi):1-1/length(stora_pi);
 A_eff_model = ([ones(length(stora_pi),1) alfa_model' (alfa_model').^2]*X);

@@ -6,9 +6,14 @@
 close all;
 clear all;
 load turboMap; clc;
-
-
-
+%%
+bdclose all
+prev = slCharacterEncoding('ISO-8859-1');
+set(gcf,'PaperUnit','inches');
+set(gcf,'PaperSize',[8 8]);
+set(gcf,'PaperPosition',[0 0 8 8]);
+set(gcf,'PaperPositionMode','Manual');
+close all;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      Sï¿½tter upp turbomotordata med antaganden     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,19 +47,20 @@ Cd_wg     = 0.9;          % Assumed value for WG discharge constant
 A_max_wg  = 0.035^2/4*pi; % Measured approximation of maximum opening area of WG valve
 dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_e_manual = 0; N_e_step = 1; NINI = 2000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
-alpha_REF_manual = 0; alphaINI = 0.0; alphaEND = alphaINI;
-wg_REF_manual = 0; wgINI = 100; wgEND = wgINI; wgST=30;
-pedPos_manual = 0; pedINI = 0.2; pedEND = 1.0; pedST=30;
+N_e_manual = 1; N_e_step = 1; NINI = 2000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
+alpha_REF_manual = 1; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
+wg_REF_manual = 1; wgINI = 100; wgEND = wgINI; wgST=30;
+pedPos_manual = 1; pedINI = 0.2; pedEND = 0.2; pedST=30;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Delmodell 1                    %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+%% Delmodell 1 %%
+%%%%%%%%%%%%%%%%%
+%===============Parmaterar fÃ¶r modeller======================
+
 load turboMap;
 
 D = 56e-03;
@@ -66,6 +72,12 @@ c_p = cp_air;
 WcCorr = comp.WcCorr;
 U_2 = N*(2*pi/60)*D/2;
 gamma = gamma_air;
+
+%Fï¿½r simulinkmodell
+T_ref = comp.TCref;
+p_ref = comp.pCref;
+
+%===============Modell fÃ¶r kompressor======================
 
 fn1 = @(a,x) a(2).*sqrt(1-(x(:,1)./(x(:,2).^2*a(1)./(2*c_p*T_af)+1).^(gamma/(gamma-1))).^2);
 xdata =[Pi_c U_2];
@@ -88,19 +100,14 @@ plot(reshape(m_c_corr_model,7,5),reshape(Pi_c,7,5), 'r--o');
 hold on;
 plot(reshape(WcCorr,7,5), reshape(Pi_c,7,5), 'b-o');
 ylabel('\Pi_c');
-xlabel('mdot_{c,corr}')
+xlabel('mdot_{c,corr}');
 
-% Compressorns effektivitet
+%===============Modell fÃ¶r kompressoreffektivitet======================
 load turboMap;
 Pi_c = comp.PiC;
 WcCorr = comp.WcCorr;
 eta_c = comp.etaC;
 
-% param_a = WcCorr - WcCorr_atmax;
-% param_b = sqrt(Pi_c - 1) - (Pi_c_atmax - 1);
-% A = [param_a.^2 2*param_a.*param_b param_b.^2 ones(34,1)];
-% B = eta_c;
-% Q = A\B;
 
 fn2 = @(a,x) a(4) + a(1).*(x(:,1) - a(5)).^2 + 2*a(2).*(x(:,1) - a(5)).*(sqrt(x(:,2) - 1) + 1 - a(6)) ...
       + a(3).*(sqrt(x(:,2) - 1) + 1 - a(6)).^2;
@@ -119,30 +126,88 @@ figure(2); clf;
 plot(reshape(WcCorr,7,5),reshape(eta_c,7,5),'b-o');
 hold on;
 plot(reshape(WcCorr,7,5),reshape(eta_c_model,7,5),'r--*');
+ylabel('\eta_c');
+xlabel('mdot_{c,corr}');
 
-T_ref = comp.TCref;
-p_ref = comp.pCref;
 
 
 %%%%%%%%%%%%%%%%%%
 %% Turbinmodell %%
 %%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%
-%% Intercoolermodell %%
-%%%%%%%%%%%%%%%%%%%%%%%
+%===============Parmaterar fÃ¶r modeller======================
+
+load turboMap;
+Pi_T = turb.PiT;
+TFP = turb.TFP*1000;    %kompensera med 1000, ty internt rtyck anges i kPa
+p_em = turb.p04;
+T_t = turb.T03;
+TSP = turb.TSP;
+eta_T = turb.etaT;
+N_tc = TSP*sqrt(T_em)*2*pi/60;       %kovertera rpm->rps
+r_t = 52e-03/2;           %Turbinradie
 
 
-%% Nedanstående kommer att behöva ändras. Står endast med för att få ett simulerbart skal!%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%===================Modell av turbin========================
+fn_turbin = @(a, x) a(1).*sqrt(1-(1./x).^a(2));
+xdata = Pi_T;
+ydata = TFP;
+turbine_parameters = lsqcurvefit(fn_turbin,[0.0052 2], xdata, ydata);
+TFP_max = turbine_parameters(1);
+TFP_exp = turbine_parameters(2);
+
+TFP_model = TFP_max*sqrt(1-(1./Pi_T).^TFP_exp);
+
+figure(3); clf; hold on; ylabel('TFP'); xlabel('\Pi_T');
+plot(Pi_T, TFP, 'bo', sort(Pi_T), sort(TFP_model),'r-*'); 
+legend('UppmÃ¤tt', 'Modell');
+
+%===================Modell av turbineffektivitet=============
+
+fn_turbine_efficiency = @(a,x) a(1).*(1-((((x(:,2)*r_t)./sqrt(2*cp_exh*T_em.*(1-1./x(:,1).^((gamma_exh-1)/gamma_exh)))-a(2)))./a(2)).^2);
+xdata = [Pi_T N_tc];
+ydata = eta_T;
+turbin_efficiency_parameters = lsqcurvefit(fn_turbine_efficiency,[1 1], xdata, ydata);
+eta_T_max = turbin_efficiency_parameters(1);
+BSR_max = turbin_efficiency_parameters(2);
+
+T_em = mean(T_t*(1-eta_T.*(1-Pi_T.^((gamma_exh-1)/gamma_exh)))); 
+
+BSR = (N_tc*r_t)./sqrt(2*cp_exh*T_em.*(1-1./Pi_T.^((gamma_exh-1)/gamma_exh)));
+eta_T_model = eta_T_max.*(1-((BSR-BSR_max)./BSR_max).^2);
+
+
+figure(4); clf; hold on; ylabel('\eta_t'); xlabel('BSR');
+axis([0.55 0.82 0.7 0.82]);
+plot(BSR, eta_T, 'bo', BSR, eta_T_model,'r*'); 
+legend('UppmÃ¤tt', 'Modell');
+
+%%%%%%%%%%%%%%%
+%% Wastegate %%
+%%%%%%%%%%%%%%%
+load grupp2_wastegate;
+t = grupp2_wastegate.t;
+wg_pos = grupp2_wastegate.wg_pos_LP;
+wg_ref = grupp2_wastegate.wg_pwm_LP;
+
+figure(5);
+plot(t(1:length(wg_pos_model)),wg_pos(1:length(wg_pos_model)),t(1:length(wg_pos_model)),wg_pos_model','r');
+
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 KpThr = 1e-6; % Throttle controller feedback setup
 TiThr = 0.1;
 
 KpWg  = 1e-6; % Wastegate controller setup
 TiWg  = 4;
 
-T_ic      = 1; % Temperature in intercooler control volume 
-tau_wg    = 1; % Wastegate actuator dynamics, estimated from measurement data
-dC2       = 1; % Outer compressor impeller diameter, measured by the students.
-dT1       = 1; % Outer turbine impeller diameter, measured by the students.
+KiFuel = 0.02;
+KpFuel = 0.009; %Fuel controler parameters
+
+T_ic      = mean(T_amb./eta_c(1:34).*(Pi_c.^((gamma_air-1)/gamma_air)-ones(size(Pi_c))+eta_c(1:34))); % Temperature in intercooler control volume 
+tau_wg    = 0.07; % Wastegate actuator dynamics, estimated from measurement data
+dC2       = 56e-03; % Outer compressor impeller diameter, measured by the students.
+dT1       = 52e-03; % Outer turbine impeller diameter, measured by the students.
+
+
