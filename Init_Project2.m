@@ -5,7 +5,8 @@
 
 close all;
 clear all;
-load turboMap; clc;
+load turboMap;
+load TqEvsNeMAP; clc;
 %%
 bdclose all
 prev = slCharacterEncoding('ISO-8859-1');
@@ -51,9 +52,9 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_e_manual = 1; N_e_step = 1; NINI = 2000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
+N_e_manual = 1; N_e_step = 1; NINI = 1000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 1; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
-wg_REF_manual = 1; wgINI = 100; wgEND = wgINI; wgST=30;
+wg_REF_manual = 1; wgINI = 1; wgEND = wgINI; wgST=30;
 pedPos_manual = 1; pedINI = 0.2; pedEND = 0.2; pedST=30;
 
 %%%%%%%%%%%%%%%%%
@@ -139,7 +140,7 @@ xlabel('mdot_{c,corr}');
 
 load turboMap;
 Pi_T = turb.PiT;
-TFP = turb.TFP*1000;    %kompensera med 1000, ty internt rtyck anges i kPa
+TFP = turb.TFP;
 p_em = turb.p04;
 T_t = turb.T03;
 TSP = turb.TSP;
@@ -191,11 +192,20 @@ t = grupp2_wastegate.t;
 wg_pos = grupp2_wastegate.wg_pos_LP;
 wg_ref = grupp2_wastegate.wg_pwm_LP;
 
-figure(5);
-plot(t(1:length(wg_pos_model)),wg_pos(1:length(wg_pos_model)),t(1:length(wg_pos_model)),wg_pos_model','r');
+%figure(5);
+%plot(t(1:length(wg_pos_model)),wg_pos(1:length(wg_pos_model)),t(1:length(wg_pos_model)),wg_pos_model','r');
+
+%%%%%%%%%%
+%% BMEP %%
+%%%%%%%%%%
+BMEP = EngineMap.M_b.*n_r*2*pi/(2.3e-3);
+A = [-ones(length(p_im),1) EngineMap.p_im];
+C_p = A\BMEP;
 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+epsilon = 0.01;     %För simulering
+
 KpThr = 1e-6; % Throttle controller feedback setup
 TiThr = 0.1;
 
@@ -209,5 +219,3 @@ T_ic      = mean(T_amb./eta_c(1:34).*(Pi_c.^((gamma_air-1)/gamma_air)-ones(size(
 tau_wg    = 0.07; % Wastegate actuator dynamics, estimated from measurement data
 dC2       = 56e-03; % Outer compressor impeller diameter, measured by the students.
 dT1       = 52e-03; % Outer turbine impeller diameter, measured by the students.
-
-
