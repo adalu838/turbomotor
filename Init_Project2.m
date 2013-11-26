@@ -52,10 +52,10 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_e_manual = 1; N_e_step = 1; NINI = 1000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
-alpha_REF_manual = 1; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
-wg_REF_manual = 1; wgINI = 1; wgEND = wgINI; wgST=30;
-pedPos_manual = 1; pedINI = 0.2; pedEND = 0.2; pedST=30;
+N_e_manual = 0; N_e_step = 1; NINI = 1000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
+alpha_REF_manual = 0; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
+wg_REF_manual = 0; wgINI = 1; wgEND = wgINI; wgST=30;
+pedPos_manual = 0; pedINI = 0.2; pedEND = 0.2; pedST=30;
 
 %%%%%%%%%%%%%%%%%
 %% Delmodell 1 %%
@@ -96,12 +96,12 @@ m_c_corr_model = m_dot_c_corr_max.*sqrt(1-(Pi_c./(U_2.^2*Psi_max./(2*c_p*T_af)+1
 m_c_corr_model(35) = NaN;
 WcCorr(35) = NaN;
 
-figure(1); clf;
-plot(reshape(m_c_corr_model,7,5),reshape(Pi_c,7,5), 'r--o');
-hold on;
-plot(reshape(WcCorr,7,5), reshape(Pi_c,7,5), 'b-o');
-ylabel('\Pi_c');
-xlabel('mdot_{c,corr}');
+% figure(1); clf;
+% plot(reshape(m_c_corr_model,7,5),reshape(Pi_c,7,5), 'r--o');
+% hold on;
+% plot(reshape(WcCorr,7,5), reshape(Pi_c,7,5), 'b-o');
+% ylabel('\Pi_c');
+% xlabel('mdot_{c,corr}');
 
 %===============Modell för kompressoreffektivitet======================
 load turboMap;
@@ -123,12 +123,12 @@ eta_c_model = comp_para2(4) + comp_para2(1).*(WcCorr - comp_para2(5)).^2 + ...
 eta_c(35) = NaN;
 WcCorr(35) = NaN;
 eta_c_model(35) = NaN;
-figure(2); clf;
-plot(reshape(WcCorr,7,5),reshape(eta_c,7,5),'b-o');
-hold on;
-plot(reshape(WcCorr,7,5),reshape(eta_c_model,7,5),'r--*');
-ylabel('\eta_c');
-xlabel('mdot_{c,corr}');
+% figure(2); clf;
+% plot(reshape(WcCorr,7,5),reshape(eta_c,7,5),'b-o');
+% hold on;
+% plot(reshape(WcCorr,7,5),reshape(eta_c_model,7,5),'r--*');
+% ylabel('\eta_c');
+% xlabel('mdot_{c,corr}');
 
 
 
@@ -142,7 +142,7 @@ load turboMap;
 Pi_T = turb.PiT;
 TFP = turb.TFP;
 p_em = turb.p04;
-T_t = turb.T03;
+T_em = turb.T03;
 TSP = turb.TSP;
 eta_T = turb.etaT;
 N_tc = TSP*sqrt(T_em)*2*pi/60;       %kovertera rpm->rps
@@ -160,9 +160,9 @@ TFP_exp = turbine_parameters(2);
 
 TFP_model = TFP_max*sqrt(1-(1./Pi_T).^TFP_exp);
 
-figure(3); clf; hold on; ylabel('TFP'); xlabel('\Pi_T');
-plot(Pi_T, TFP, 'bo', sort(Pi_T), sort(TFP_model),'r-*'); 
-legend('Uppmätt', 'Modell');
+% figure(3); clf; hold on; ylabel('TFP'); xlabel('\Pi_T');
+% plot(Pi_T, TFP, 'bo', sort(Pi_T), sort(TFP_model),'r-*'); 
+% legend('Uppmätt', 'Modell');
 
 %===================Modell av turbineffektivitet=============
 
@@ -173,16 +173,16 @@ turbin_efficiency_parameters = lsqcurvefit(fn_turbine_efficiency,[1 1], xdata, y
 eta_T_max = turbin_efficiency_parameters(1);
 BSR_max = turbin_efficiency_parameters(2);
 
-T_em = mean(T_t*(1-eta_T.*(1-Pi_T.^((gamma_exh-1)/gamma_exh)))); 
+T_t = mean(T_em*(1-eta_T.*(1-Pi_T.^((gamma_exh-1)/gamma_exh)))); 
 
 BSR = (N_tc*r_t)./sqrt(2*cp_exh*T_em.*(1-1./Pi_T.^((gamma_exh-1)/gamma_exh)));
 eta_T_model = eta_T_max.*(1-((BSR-BSR_max)./BSR_max).^2);
 
 
-figure(4); clf; hold on; ylabel('\eta_t'); xlabel('BSR');
-axis([0.55 0.82 0.7 0.82]);
-plot(BSR, eta_T, 'bo', BSR, eta_T_model,'r*'); 
-legend('Uppmätt', 'Modell');
+% figure(4); clf; hold on; ylabel('\eta_t'); xlabel('BSR');
+% axis([0.55 0.82 0.7 0.82]);
+% plot(BSR, eta_T, 'bo', BSR, eta_T_model,'r*'); 
+% legend('Uppmätt', 'Modell');
 
 %%%%%%%%%%%%%%%
 %% Wastegate %%
