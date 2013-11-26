@@ -55,7 +55,7 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 N_e_manual = 0; N_e_step = 1; NINI = 1000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 0; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
 wg_REF_manual = 0; wgINI = 1; wgEND = wgINI; wgST=30;
-pedPos_manual = 1; pedINI = 0.1; pedEND = 0.8; pedST=30;
+pedPos_manual = 0; pedINI = 0.1; pedEND = 0.8; pedST=30;
 
 %%%%%%%%%%%%%%%%%
 %% Delmodell 1 %%
