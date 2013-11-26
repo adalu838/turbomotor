@@ -52,10 +52,10 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_e_manual = 0; N_e_step = 1; NINI = 1000; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
+N_e_manual = 0; N_e_step = 1; NINI = 2500; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 0; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
 wg_REF_manual = 0; wgINI = 1; wgEND = wgINI; wgST=30;
-pedPos_manual = 0; pedINI = 0.1; pedEND = 0.8; pedST=30;
+pedPos_manual = 0; pedINI = 0; pedEND = 1; pedST=30;
 
 %%%%%%%%%%%%%%%%%
 %% Delmodell 1 %%
@@ -219,3 +219,47 @@ T_ic      = mean(T_amb./eta_c(1:34).*(Pi_c.^((gamma_air-1)/gamma_air)-ones(size(
 tau_wg    = 0.07; % Wastegate actuator dynamics, estimated from measurement data
 dC2       = 56e-03; % Outer compressor impeller diameter, measured by the students.
 dT1       = 52e-03; % Outer turbine impeller diameter, measured by the students.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+figure;
+plot(N_e,Tq_e,TqEvsNe.Ne,TqEvsNe.TqMAX,'r')
+xlabel('Varvtal (Rpm)');
+ylabel('Moment (Nm)')
+title('Maximal utmomentkurva, map och modell');
+legend('Modell','Map');
+
+%%
+PiC = comp.PiC;
+WcCorr = comp.WcCorr;
+PiC(35) = NaN;
+WcCorr(35) = NaN;
+figure;
+plot(WcCorr_model,PiC_model,'r*',reshape(WcCorr,7,5),reshape(PiC,7,5),'b-o');
+xlabel('Korrigerat luftflöde (kg/s)');
+ylabel('Tryckkvot')
+title('Tryckkvot plottat mot korrigerat luftmassflöde');
+legend('Modell','Map');
+
+%%
+plot(t_sim,pressure_plot)
+xlabel('Tid (s)');
+ylabel('Tryck (Pa)');
+title('Tryckplot för regleringingsvalidering');
+legend('p_{ic}','p_{im}','p_{t}','p_{em}');
+
+%%
+plot(t_sim,VehicleSpeed,'r');
+hold on;
+plot(Speed(:,1),Speed(:,2));
+title('Fordonshastighet');
+xlabel('Tid (s)');
+ylabel('Hastighet (km/h)');
+legend('Uppnådd hastighet','Begärd hastighet')
+
+%%
+plot(t_sim,pressure_plot)
+xlabel('Tid (s)');
+ylabel('Tryck (Pa)');
+title('Tryckplot för pedalsteg');
+legend('p_{ic}','p_{im}','p_{t}','p_{em}');
+
