@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1275"
+    ComputedModelVersion    "1.1286"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -49,7 +49,7 @@ Model {
       }
       Array {
 	Type			"Simulink.EditorInfo"
-	Dimension		8
+	Dimension		5
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [0]
@@ -57,11 +57,11 @@ Model {
 	  LoadSaveID		  "1594"
 	  Extents		  [1884.0, 997.0]
 	  ZoomFactor		  [1.32]
-	  Offset		  [12.878787878787564, 0.0]
+	  Offset		  [12.143939393939377, 0.0]
 	}
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "38"
 	  Extents		  [1884.0, 997.0]
@@ -80,47 +80,20 @@ Model {
 	Object {
 	  $ObjectID		  8
 	  IsActive		  [0]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "695"
 	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.25]
-	  Offset		  [-76.724999999999909, 55.13333333333329]
+	  ZoomFactor		  [1.5]
+	  Offset		  [1.799995112419345, 284.61666666666667]
 	}
 	Object {
 	  $ObjectID		  9
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "931"
 	  Extents		  [1884.0, 997.0]
 	  ZoomFactor		  [1.0]
 	  Offset		  [-9.375, 0.0]
-	}
-	Object {
-	  $ObjectID		  10
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "70"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [5.8523809523810542, -10.757142857142753]
-	}
-	Object {
-	  $ObjectID		  11
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "1755"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [4.0, 0.0]
-	}
-	Object {
-	  $ObjectID		  12
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "1689"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-372.0, -278.5]
 	}
 	PropName		"EditorsInfo"
       }
@@ -132,9 +105,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "adalu838"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 26 22:30:32 2013"
-  RTWModifiedTimeStamp	  307371842
-  ModelVersionFormat	  "1.%<AutoIncrement:1275>"
+  LastModifiedDate	  "Tue Dec 03 17:21:10 2013"
+  RTWModifiedTimeStamp	  307978766
+  ModelVersionFormat	  "1.%<AutoIncrement:1286>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -169,7 +142,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    13
+    $ObjectID		    10
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "Project2"
     Array {
@@ -227,13 +200,13 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      14
+      $ObjectID		      11
       Version		      "1.12.1"
       Array {
 	Type			"Handle"
 	Dimension		8
 	Simulink.SolverCC {
-	  $ObjectID		  15
+	  $ObjectID		  12
 	  Version		  "1.12.1"
 	  StartTime		  "0.0"
 	  StopTime		  "600"
@@ -268,7 +241,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  16
+	  $ObjectID		  13
 	  Version		  "1.12.1"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -300,7 +273,7 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  17
+	  $ObjectID		  14
 	  Version		  "1.12.1"
 	  BlockReduction	  off
 	  BooleanDataType	  off
@@ -343,7 +316,7 @@ Model {
 	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  18
+	  $ObjectID		  15
 	  Version		  "1.12.1"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -433,7 +406,7 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  19
+	  $ObjectID		  16
 	  Version		  "1.12.1"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -470,7 +443,7 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  20
+	  $ObjectID		  17
 	  Version		  "1.12.1"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -485,7 +458,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  21
+	  $ObjectID		  18
 	  Version		  "1.12.1"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
@@ -500,7 +473,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  22
+	  $ObjectID		  19
 	  Version		  "1.12.1"
 	  SystemTargetFile	  "grt.tlc"
 	  GenCodeOnly		  off
@@ -549,7 +522,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      23
+	      $ObjectID		      20
 	      Version		      "1.12.1"
 	      ForceParamTrailComments off
 	      GenerateComments	      on
@@ -590,7 +563,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      24
+	      $ObjectID		      21
 	      Version		      "1.12.1"
 	      Array {
 		Type			"Cell"
@@ -665,11 +638,11 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    14
+    $ObjectID		    11
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    25
+    $ObjectID		    22
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -1242,7 +1215,7 @@ Model {
   System {
     Name		    "Project2"
     Location		    [-8, -8, 1928, 1168]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1255,7 +1228,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2870"
+    SIDHighWatermark	    "2876"
     Block {
       BlockType		      Clock
       Name		      "Clock"
@@ -2808,7 +2781,7 @@ Model {
 		    BlockType		    Constant
 		    Name		    "Constant"
 		    SID			    "2532"
-		    Position		    [25, 115, 65, 165]
+		    Position		    [25, 115, 65, 135]
 		    ZOrder		    21
 		    ShowName		    off
 		    Value		    "C_p(1)"
@@ -2866,7 +2839,7 @@ Model {
 		    Line {
 		    SrcBlock		    "Constant"
 		    SrcPort		    1
-		    Points		    [6, 0; 0, -95]
+		    Points		    [6, 0; 0, -80]
 		    DstBlock		    "Subtract2"
 		    DstPort		    2
 		    }
@@ -2973,6 +2946,42 @@ Model {
 		  Threshold		  "0.1"
 		  InputSameDT		  off
 		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  ToWorkspace
+		  Name			  "To Workspace"
+		  SID			  "2871"
+		  Ports			  [1]
+		  Position		  [600, 200, 660, 230]
+		  ZOrder		  23
+		  ShowName		  off
+		  VariableName		  "Tq_ref"
+		  MaxDataPoints		  "inf"
+		  SampleTime		  "-1"
+		}
+		Block {
+		  BlockType		  ToWorkspace
+		  Name			  "To Workspace1"
+		  SID			  "2872"
+		  Ports			  [1]
+		  Position		  [740, 200, 800, 230]
+		  ZOrder		  24
+		  ShowName		  off
+		  VariableName		  "bmep_ref"
+		  MaxDataPoints		  "inf"
+		  SampleTime		  "-1"
+		}
+		Block {
+		  BlockType		  ToWorkspace
+		  Name			  "To Workspace2"
+		  SID			  "2873"
+		  Ports			  [1]
+		  Position		  [860, 200, 920, 230]
+		  ZOrder		  25
+		  ShowName		  off
+		  VariableName		  "p_im_ref"
+		  MaxDataPoints		  "inf"
+		  SampleTime		  "-1"
 		}
 		Block {
 		  BlockType		  Gain
@@ -3096,20 +3105,43 @@ Model {
 		Line {
 		  SrcBlock		  "Switch"
 		  SrcPort		  1
-		  DstBlock		  "Tq_ref -> BMEP_ref"
-		  DstPort		  1
+		  Points		  [5, 0]
+		  Branch {
+		    DstBlock		    "To Workspace"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "Tq_ref -> BMEP_ref"
+		    DstPort		    1
+		  }
 		}
 		Line {
 		  SrcBlock		  "Tq_ref -> BMEP_ref"
 		  SrcPort		  1
-		  DstBlock		  "BMEP -> p_im"
-		  DstPort		  1
+		  Points		  [3, 0]
+		  Branch {
+		    Points		    [0, 95]
+		    DstBlock		    "To Workspace1"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "BMEP -> p_im"
+		    DstPort		    1
+		  }
 		}
 		Line {
 		  SrcBlock		  "BMEP -> p_im"
 		  SrcPort		  1
-		  DstBlock		  "p_im_ref"
-		  DstPort		  1
+		  Points		  [1, 0]
+		  Branch {
+		    Points		    [0, 95]
+		    DstBlock		    "To Workspace2"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "p_im_ref"
+		    DstPort		    1
+		  }
 		}
 	      }
 	    }
@@ -3121,7 +3153,7 @@ Model {
 	      Position		      [715, 140, 745, 175]
 	      ZOrder		      6
 	      Floating		      off
-	      Location		      [969, 56, 1913, 1151]
+	      Location		      [881, 155, 1825, 1250]
 	      Open		      off
 	      NumInputPorts	      "2"
 	      List {
@@ -3140,7 +3172,7 @@ Model {
 		MarkerStyles		"none|none|none|none|none|none"
 	      }
 	      ShowLegends	      on
-	      LegendLocations	      "0.31946     0.55336     0.17161    0.018569\n0.86059     0.46445     0.26165    0.018569"
+	      LegendLocations	      "0.79643      0.9484     0.17161    0.018569\n0.70639     0.46895     0.26165    0.018569"
 	      YMin		      "-1.73472e-17~-0.07"
 	      YMax		      "0.24~6.93889e-18"
 	      SaveName		      "ScopeData18"
@@ -3456,7 +3488,7 @@ Model {
 		    BlockType		    Constant
 		    Name		    "(g+1)/g"
 		    SID			    "2616"
-		    Position		    [250, 145, 280, 175]
+		    Position		    [130, 160, 280, 180]
 		    ZOrder		    -2
 		    Value		    "(gamma_air+1)/gamma_air"
 		    }
@@ -3472,7 +3504,7 @@ Model {
 		    BlockType		    Constant
 		    Name		    "2g/(g-1)"
 		    SID			    "2618"
-		    Position		    [400, 145, 430, 175]
+		    Position		    [250, 215, 410, 235]
 		    ZOrder		    -4
 		    Value		    "(2*gamma_air)/(gamma_air-1)"
 		    }
@@ -3617,7 +3649,7 @@ Model {
 		    Line {
 		    SrcBlock		    "(g+1)/g"
 		    SrcPort		    1
-		    Points		    [10, 0; 0, -10]
+		    Points		    [10, 0; 0, -20]
 		    DstBlock		    "Math\nFunction1"
 		    DstPort		    2
 		    }
@@ -3649,7 +3681,7 @@ Model {
 		    Line {
 		    SrcBlock		    "2g/(g-1)"
 		    SrcPort		    1
-		    Points		    [10, 0; 0, -80]
+		    Points		    [30, 0; 0, -145]
 		    DstBlock		    "Product"
 		    DstPort		    2
 		    }
@@ -4133,7 +4165,7 @@ Model {
 		    BlockType		    Inport
 		    Name		    "N"
 		    SID			    "2599"
-		    Position		    [25, 108, 55, 122]
+		    Position		    [65, 108, 95, 122]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
 		    }
@@ -4141,7 +4173,7 @@ Model {
 		    BlockType		    Inport
 		    Name		    "p_im"
 		    SID			    "2600"
-		    Position		    [25, 208, 55, 222]
+		    Position		    [65, 208, 95, 222]
 		    ZOrder		    -2
 		    Port		    "2"
 		    IconDisplay		    "Port number"
@@ -4150,7 +4182,7 @@ Model {
 		    BlockType		    Sqrt
 		    Name		    "Sqrt"
 		    SID			    "2601"
-		    Position		    [80, 100, 110, 130]
+		    Position		    [120, 100, 150, 130]
 		    ZOrder		    -29
 		    ShowName		    off
 		    }
@@ -4158,7 +4190,7 @@ Model {
 		    BlockType		    Sqrt
 		    Name		    "Sqrt1"
 		    SID			    "2602"
-		    Position		    [80, 200, 110, 230]
+		    Position		    [120, 200, 150, 230]
 		    ZOrder		    -29
 		    ShowName		    off
 		    }
@@ -4166,7 +4198,7 @@ Model {
 		    BlockType		    Constant
 		    Name		    "c0"
 		    SID			    "2603"
-		    Position		    [80, 25, 110, 55]
+		    Position		    [20, 40, 150, 60]
 		    ZOrder		    -4
 		    Value		    "n_vol_parameters(1)"
 		    }
@@ -4174,7 +4206,7 @@ Model {
 		    BlockType		    Gain
 		    Name		    "c1"
 		    SID			    "2604"
-		    Position		    [165, 200, 205, 230]
+		    Position		    [205, 200, 245, 230]
 		    ZOrder		    -8
 		    Gain		    "n_vol_parameters(2)"
 		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
@@ -4185,7 +4217,7 @@ Model {
 		    BlockType		    Gain
 		    Name		    "c2"
 		    SID			    "2605"
-		    Position		    [135, 94, 205, 136]
+		    Position		    [175, 94, 245, 136]
 		    ZOrder		    -8
 		    Gain		    "n_vol_parameters(3)"
 		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
@@ -4197,7 +4229,7 @@ Model {
 		    Name		    "n_vol1"
 		    SID			    "2606"
 		    Ports		    [3, 1]
-		    Position		    [285, 149, 315, 181]
+		    Position		    [325, 149, 355, 181]
 		    ZOrder		    -2
 		    ShowName		    off
 		    Inputs		    "+++"
@@ -4209,7 +4241,7 @@ Model {
 		    BlockType		    Outport
 		    Name		    "n_vol"
 		    SID			    "2607"
-		    Position		    [340, 158, 370, 172]
+		    Position		    [380, 158, 410, 172]
 		    ZOrder		    -35
 		    IconDisplay		    "Port number"
 		    }
@@ -4235,7 +4267,7 @@ Model {
 		    Line {
 		    SrcBlock		    "c2"
 		    SrcPort		    1
-		    Points		    [144, 0; 0, -105; -344, 0; 0, 155]
+		    Points		    [19, 0; 0, 50]
 		    DstBlock		    "n_vol1"
 		    DstPort		    2
 		    }
@@ -4441,7 +4473,7 @@ Model {
 	      System {
 		Name			"Throttle Feedback\nincluding anti-windup"
 		Location		[-8, -8, 1928, 1168]
-		Open			on
+		Open			off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -4562,7 +4594,6 @@ Model {
 		    MarkerStyles	    "none|none|none|none|none|none"
 		  }
 		  ShowLegends		  on
-		  LegendLocations	  "0.93325     0.94824    0.051042    0.018302"
 		  YMin			  "-6"
 		  YMax			  "4.5"
 		  SaveName		  "ScopeData21"
@@ -4821,7 +4852,7 @@ Model {
 	      System {
 		Name			"Waste-gate Feedback\nincluding anti-windup"
 		Location		[-8, -8, 1928, 1168]
-		Open			on
+		Open			off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -4903,7 +4934,7 @@ Model {
 		  Position		  [370, 96, 400, 129]
 		  ZOrder		  3
 		  Floating		  off
-		  Location		  [1, 48, 1921, 1159]
+		  Location		  [10, 104, 1930, 1215]
 		  Open			  off
 		  NumInputPorts		  "2"
 		  List {
@@ -4922,7 +4953,7 @@ Model {
 		    MarkerStyles	    "none|none|none|none|none|none"
 		  }
 		  ShowLegends		  on
-		  LegendLocations	  "0.92127     0.94824    0.065104    0.018302\n0.92023      0.4694    0.054167    0.018302"
+		  LegendLocations	  "0.91918     0.94824    0.065104    0.018302\n0.93012      0.4694    0.054167    0.018302"
 		  YMin			  "-50000~-0.085"
 		  YMax			  "100000~0"
 		  SaveName		  "ScopeData13"
@@ -4981,6 +5012,18 @@ Model {
 		  InputSameDT		  off
 		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  ToWorkspace
+		  Name			  "To Workspace"
+		  SID			  "2874"
+		  Ports			  [1]
+		  Position		  [245, 137, 320, 163]
+		  ZOrder		  4
+		  ShowName		  off
+		  VariableName		  "p_bef_thr_ref"
+		  MaxDataPoints		  "inf"
+		  SampleTime		  "-1"
 		}
 		Block {
 		  BlockType		  Gain
@@ -5128,8 +5171,16 @@ Model {
 		Line {
 		  SrcBlock		  "Add"
 		  SrcPort		  1
-		  DstBlock		  "Subtract3"
-		  DstPort		  2
+		  Points		  [19, 0]
+		  Branch {
+		    Points		    [0, 70]
+		    DstBlock		    "To Workspace"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "Subtract3"
+		    DstPort		    2
+		  }
 		}
 		Line {
 		  SrcBlock		  "a0"
@@ -5356,7 +5407,7 @@ Model {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  Floating		  off
-	  Location		  [1, 48, 1921, 1159]
+	  Location		  [9, 56, 953, 1151]
 	  Open			  off
 	  NumInputPorts		  "4"
 	  ZoomMode		  "xonly"
@@ -5379,8 +5430,8 @@ Model {
 	  }
 	  ShowLegends		  off
 	  TimeRange		  "65              "
-	  YMin			  "0.0024~0.05~1~142"
-	  YMax			  "0.00335~0.0775~1~150.5"
+	  YMin			  "0.0024~0.05~0.95~142"
+	  YMax			  "0.00335~0.0775~1.05~150.5"
 	  SaveName		  "ScopeData17"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
@@ -7339,7 +7390,7 @@ Model {
       System {
 	Name			"Engine"
 	Location		[-8, -8, 1928, 1168]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -7629,7 +7680,7 @@ Model {
 	  System {
 	    Name		    "Compressor"
 	    Location		    [-8, -8, 1928, 1168]
-	    Open		    off
+	    Open		    on
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -7782,7 +7833,7 @@ Model {
 		  Position		  [130, 65, 235, 95]
 		  ZOrder		  13
 		  ShowName		  off
-		  Value			  "dC2/2*2*pi/30"
+		  Value			  "dC2/2"
 		}
 		Block {
 		  BlockType		  Constant
@@ -8743,7 +8794,7 @@ Model {
 		  Ports			  [4, 1]
 		  Position		  [930, 396, 960, 529]
 		  ZOrder		  28
-		  Inputs		  "++++"
+		  Inputs		  "+---"
 		  InputSameDT		  off
 		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 		  SaturateOnIntegerOverflow off
@@ -15264,7 +15315,7 @@ Model {
 	  ZOrder		  -25
 	  NamePlacement		  "alternate"
 	  Floating		  off
-	  Location		  [351, 235, 1322, 1001]
+	  Location		  [76, 191, 1047, 957]
 	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
@@ -15388,7 +15439,6 @@ Model {
 	    MarkerStyles	    "none|none|none|none|none|none"
 	  }
 	  ShowLegends		  on
-	  LegendLocations	  "0.33351     0.93409     0.11441    0.032877\n0.87906     0.46895    0.088983    0.018569"
 	  TimeRange		  "60"
 	  YMin			  "0.002~0.002"
 	  YMax			  "0.012~0.012"
@@ -15402,7 +15452,7 @@ Model {
 	  Name			  "TurboSpeed5"
 	  SID			  "2867"
 	  Ports			  [1]
-	  Position		  [1135, 359, 1165, 391]
+	  Position		  [1125, 179, 1155, 211]
 	  ZOrder		  21
 	  NamePlacement		  "alternate"
 	  Floating		  off
@@ -15428,6 +15478,77 @@ Model {
 	  YMin			  "0.002"
 	  YMax			  "0.011"
 	  SaveName		  "ScopeData25"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "TurboSpeed6"
+	  SID			  "2875"
+	  Ports			  [1]
+	  Position		  [185, 424, 215, 456]
+	  ZOrder		  22
+	  BlockMirror		  on
+	  Floating		  off
+	  Location		  [969, 56, 1913, 1151]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  ZoomMode		  "xonly"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  off
+	  TimeRange		  "100             "
+	  YMin			  "2000"
+	  YMax			  "21000"
+	  SaveName		  "ScopeData26"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "TurboSpeed7"
+	  SID			  "2876"
+	  Ports			  [1]
+	  Position		  [1100, 54, 1130, 86]
+	  ZOrder		  23
+	  NamePlacement		  "alternate"
+	  Floating		  off
+	  Location		  [351, 235, 1322, 1001]
+	  Open			  off
+	  NumInputPorts		  "1"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  off
+	  TimeRange		  "60              "
+	  YMin			  "57.5"
+	  YMax			  "97.5"
+	  SaveName		  "ScopeData27"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
 	  SampleTime		  "0"
@@ -16879,21 +17000,29 @@ Model {
 	Line {
 	  SrcBlock		  "Compressor"
 	  SrcPort		  2
-	  Points		  [0, 15; 105, 0]
+	  Points		  [0, 15]
 	  Branch {
-	    DstBlock		    "Intercooler"
+	    Points		    [0, 15]
+	    DstBlock		    "TurboSpeed6"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 25; 355, 0]
+	    Points		    [105, 0]
 	    Branch {
-	      DstBlock		      "m_dot_air [kg/s]"
+	      DstBlock		      "Intercooler"
 	      DstPort		      1
 	    }
 	    Branch {
-	      Points		      [0, 35]
-	      DstBlock		      "W_air"
-	      DstPort		      1
+	      Points		      [0, 25; 355, 0]
+	      Branch {
+		DstBlock		"m_dot_air [kg/s]"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 35]
+		DstBlock		"W_air"
+		DstPort			1
+	      }
 	    }
 	  }
 	}
@@ -16962,9 +17091,17 @@ Model {
 		DstPort			2
 	      }
 	      Branch {
-		Points			[135, 0; 0, 270]
-		DstBlock		"Cylinder"
-		DstPort			2
+		Points			[132, 0]
+		Branch {
+		  Points		  [0, -20]
+		  DstBlock		  "TurboSpeed5"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [3, 0; 0, 270]
+		  DstBlock		  "Cylinder"
+		  DstPort		  2
+		}
 	      }
 	    }
 	    Branch {
@@ -17064,24 +17201,16 @@ Model {
 	Line {
 	  SrcBlock		  "Luftmassflöde till cylinder"
 	  SrcPort		  1
-	  Points		  [0, 15]
+	  Points		  [0, 30]
 	  Branch {
-	    Points		    [192, 0; 0, -30]
-	    DstBlock		    "TurboSpeed5"
-	    DstPort		    1
+	    Points		    [125, 0; 0, 145]
+	    DstBlock		    "Cylinder"
+	    DstPort		    4
 	  }
 	  Branch {
-	    Points		    [0, 15]
-	    Branch {
-	      Points		      [125, 0; 0, 145]
-	      DstBlock		      "Cylinder"
-	      DstPort		      4
-	    }
-	    Branch {
-	      Points		      [-110, 0]
-	      DstBlock		      "Intake\nmanifold"
-	      DstPort		      2
-	    }
+	    Points		    [-110, 0]
+	    DstBlock		    "Intake\nmanifold"
+	    DstPort		    2
 	  }
 	}
 	Line {
@@ -17091,9 +17220,16 @@ Model {
 	  Branch {
 	    Points		    [100, 0]
 	    Branch {
-	      Points		      [55, 0; 0, 374]
-	      DstBlock		      "Cylinder"
-	      DstPort		      1
+	      Points		      [55, 0]
+	      Branch {
+		Points			[0, 374]
+		DstBlock		"Cylinder"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"TurboSpeed7"
+		DstPort			1
+	      }
 	    }
 	    Branch {
 	      DstBlock		      "Bränsleinsprutning"
@@ -17407,7 +17543,7 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      on
-      LegendLocations	      "0.86953     0.90457    0.088983    0.061492\n0.87059     0.70822    0.097458    0.018569\n"
+      LegendLocations	      "0.87906     0.90457    0.088983    0.061492\n0.87059     0.70822    0.097458    0.018569\n"
       "0.87694     0.46895    0.091102    0.018569\n0.88542     0.23059    0.082627    0.018569"
       TimeRange		      "100             "
       YMin		      "120000~137.25~0.09073~5780.2"
@@ -17462,7 +17598,7 @@ Model {
       Location		      [969, 56, 1913, 1151]
       Open		      off
       NumInputPorts	      "1"
-      ZoomMode		      "xonly"
+      ZoomMode		      "yonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
@@ -17478,7 +17614,7 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      on
-      LegendLocations	      "0.3879     0.78434    0.088983    0.061492"
+      LegendLocations	      "0.87906     0.90457    0.088983    0.061492"
       YMin		      "120000"
       YMax		      "330000"
       SaveName		      "ScopeData12"
@@ -17958,10 +18094,10 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      on
-      LegendLocations	      "0.36423     0.93775     0.13665    0.032877"
+      LegendLocations	      "0.11953     0.90122     0.13665    0.032877"
       TimeRange		      "60              "
-      YMin		      "50"
-      YMax		      "225"
+      YMin		      "0"
+      YMax		      "210"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       MaxDataPoints	      "3000"

@@ -52,10 +52,10 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_e_manual = 0; N_e_step = 1; NINI = 2500; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
+N_e_manual = 0; N_e_step = 1; NINI = 800; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 0; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
 wg_REF_manual = 0; wgINI = 1; wgEND = wgINI; wgST=30;
-pedPos_manual = 0; pedINI = 0; pedEND = 1; pedST=30;
+pedPos_manual = 0; pedINI = 0.3; pedEND = 0.3; pedST=80;
 
 %%%%%%%%%%%%%%%%%
 %% Delmodell 1 %%
@@ -96,12 +96,12 @@ m_c_corr_model = m_dot_c_corr_max.*sqrt(1-(Pi_c./(U_2.^2*Psi_max./(2*c_p*T_af)+1
 m_c_corr_model(35) = NaN;
 WcCorr(35) = NaN;
 
-% figure(1); clf;
-% plot(reshape(m_c_corr_model,7,5),reshape(Pi_c,7,5), 'r--o');
-% hold on;
-% plot(reshape(WcCorr,7,5), reshape(Pi_c,7,5), 'b-o');
-% ylabel('\Pi_c');
-% xlabel('mdot_{c,corr}');
+figure(1); clf;
+plot(reshape(m_c_corr_model,7,5),reshape(Pi_c,7,5), 'r--o');
+hold on;
+plot(reshape(WcCorr,7,5), reshape(Pi_c,7,5), 'b-o');
+ylabel('\Pi_c');
+xlabel('mdot_{c,corr}');
 
 %===============Modell fÃ¶r kompressoreffektivitet======================
 load turboMap;
@@ -110,15 +110,15 @@ WcCorr = comp.WcCorr;
 eta_c = comp.etaC;
 
 
-fn2 = @(a,x) a(4) + a(1).*(x(:,1) - a(5)).^2 + 2*a(2).*(x(:,1) - a(5)).*(sqrt(x(:,2) - 1) + 1 - a(6)) ...
-      + a(3).*(sqrt(x(:,2) - 1) + 1 - a(6)).^2;
+fn2 = @(a,x) a(4) - a(1).*(x(:,1) - a(5)).^2 - 2*a(2).*(x(:,1) - a(5)).*(sqrt(x(:,2) - 1) + 1 - a(6)) ...
+      - a(3).*(sqrt(x(:,2) - 1) + 1 - a(6)).^2;
 xdata =[WcCorr Pi_c];
 ydata = eta_c;
 comp_para2 = lsqcurvefit(fn2,[1 1 1 0.8 0.07 1.5], xdata, ydata);
 
-eta_c_model = comp_para2(4) + comp_para2(1).*(WcCorr - comp_para2(5)).^2 + ... 
+eta_c_model = comp_para2(4) - comp_para2(1).*(WcCorr - comp_para2(5)).^2 - ... 
               2*comp_para2(2).*(WcCorr - comp_para2(5)).*(sqrt(Pi_c - 1) + 1 - comp_para2(6)) ...
-              + comp_para2(3).*(sqrt(Pi_c - 1) + 1 - comp_para2(6)).^2;
+              - comp_para2(3).*(sqrt(Pi_c - 1) + 1 - comp_para2(6)).^2;
 
 eta_c(35) = NaN;
 WcCorr(35) = NaN;
@@ -159,7 +159,7 @@ TFP_max = turbine_parameters(1);
 TFP_exp = turbine_parameters(2);
 
 TFP_model = TFP_max*sqrt(1-(1./Pi_T).^TFP_exp);
-
+% 
 % figure(3); clf; hold on; ylabel('TFP'); xlabel('\Pi_T');
 % plot(Pi_T, TFP, 'bo', sort(Pi_T), sort(TFP_model),'r-*'); 
 % legend('UppmÃ¤tt', 'Modell');
@@ -199,8 +199,14 @@ wg_ref = grupp2_wastegate.wg_pwm_LP;
 %% BMEP %%
 %%%%%%%%%%
 BMEP = EngineMap.M_b.*n_r*2*pi/(2.3e-3);
-A = [-ones(length(p_im),1) EngineMap.p_im];
+A = [-ones(length(EngineMap.p_im),1) EngineMap.p_im];
 C_p = A\BMEP;
+% figure;
+% plot(BMEP,EngineMap.p_im,'bo',Tq_e*2*pi*n_r/V_D,p_im, 'r*')
+% xlabel('BMEP');
+% ylabel('p_{im}');
+% title('Modelvalidering av framkoppling');
+% legend('Mätvärden','Modell');
 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -241,11 +247,11 @@ title('Tryckkvot plottat mot korrigerat luftmassflöde');
 legend('Modell','Map');
 
 %%
-plot(t_sim,pressure_plot)
+plot(t_sim,p_im_ref,'b--',t_sim,p_im,'b',t_sim,p_ic,'m',t_sim,p_bef_thr_ref,'m--',t_sim,Tq_e,'r')
 xlabel('Tid (s)');
 ylabel('Tryck (Pa)');
 title('Tryckplot för regleringingsvalidering');
-legend('p_{ic}','p_{im}','p_{t}','p_{em}');
+legend('p_{im,ref}','p_{im}','p_{ic}','p_{ic,ref}');
 
 %%
 plot(t_sim,VehicleSpeed,'r');
@@ -262,4 +268,3 @@ xlabel('Tid (s)');
 ylabel('Tryck (Pa)');
 title('Tryckplot för pedalsteg');
 legend('p_{ic}','p_{im}','p_{t}','p_{em}');
-

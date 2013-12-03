@@ -356,7 +356,7 @@ dmacAct = EngineAir;
 %  dmfAct    : Bränsleflöde till cylinder i kg/s
 dmfcAct = EngineFuel;
 %  lightOff  : Tid i sekunder tills light-Off
-lightOff = 0;
+lightOff = 37.5;
 
 calcemissions(tout, lambda, Distance, dmacAct, dmfcAct, lightOff);
 
