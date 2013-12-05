@@ -344,23 +344,23 @@ light_Off_time = 37.5; %sekunder
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      Beräkna emissioner      %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Argument till calcEmissions  %%%
-% tout      : Tidsvektor från simulink
-tout = t_sim;
-%  lambda    : Kontinerligt lambda
-lambda = Lambda_cont;
-%  Distance  : Körd sträcka i meter
-Distance = VehicleDistance;
-%  dmacAct   : Luftmassflöde till cylindern i kg/s
-dmacAct = EngineAir;
-%  dmfAct    : Bränsleflöde till cylinder i kg/s
-dmfcAct = EngineFuel;
-%  lightOff  : Tid i sekunder tills light-Off
-lightOff = 37.5;
-
-calcemissions(tout, lambda, Distance, dmacAct, dmfcAct, lightOff);
-
-% Ber�kna bränsleförbrukningen
-fuelCons = EngineFuelAcc(length(EngineFuelAcc))/Distance(length(Distance))*100000;
-  
-disp(sprintf('Br�nslef�rbrukning: %1.2f [l/(10 mil)]',fuelCons));
+% %%% Argument till calcEmissions  %%%
+% % tout      : Tidsvektor från simulink
+% tout = t_sim;
+% %  lambda    : Kontinerligt lambda
+% lambda = Lambda_cont;
+% %  Distance  : Körd sträcka i meter
+% Distance = VehicleDistance;
+% %  dmacAct   : Luftmassflöde till cylindern i kg/s
+% dmacAct = EngineAir;
+% %  dmfAct    : Bränsleflöde till cylinder i kg/s
+% dmfcAct = EngineFuel;
+% %  lightOff  : Tid i sekunder tills light-Off
+% lightOff = 0;
+% 
+% calcemissions(tout, lambda, Distance, dmacAct, dmfcAct, lightOff);
+% 
+% % Ber�kna bränsleförbrukningen
+% fuelCons = trapz(t_sim, dmfcAct)/max(VehicleDistance)*100000/0.75;
+%   
+% disp(sprintf('Br�nslef�rbrukning: %1.2f [l/(10 mil)]',fuelCons));

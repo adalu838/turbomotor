@@ -77,8 +77,8 @@ EmissionmassAfterCat = [resultCO resultNOx resultHC]'*[diff(tp); ...
 disp(' ')
 
 disp('Emissioner efter katalysator:')
-disp(sprintf('\t CO  : %1.2e [g/km]\tGränsvärde EURO 3 : 2.3  [g/km]   EURO 4 : 1.0  [g/km]', EmissionmassAfterCat(1)))
-disp(sprintf('\t HC  : %1.2e [g/km]\tGränsvärde EURO 3 : 0.20 [g/km]   EURO 4 : 0.10 [g/km]', EmissionmassAfterCat(3)))
-disp(sprintf('\t NOx : %1.2e [g/km]\tGränsvärde EURO 3 : 0.15 [g/km]   EURO 4 : 0.08 [g/km]', EmissionmassAfterCat(2)))
+disp(sprintf('\t CO  : %1.2f [g/km]\tGränsvärde EURO 3 : 2.3  [g/km]   EURO 4 : 1.0  [g/km]', EmissionmassAfterCat(1)))
+disp(sprintf('\t HC  : %1.2f [g/km]\tGränsvärde EURO 3 : 0.20 [g/km]   EURO 4 : 0.10 [g/km]', EmissionmassAfterCat(3)))
+disp(sprintf('\t NOx : %1.2f [g/km]\tGränsvärde EURO 3 : 0.15 [g/km]   EURO 4 : 0.08 [g/km]', EmissionmassAfterCat(2)))
 %toc
 

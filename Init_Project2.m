@@ -52,10 +52,10 @@ dP_thrREF = 10e3;         % Default desired pressure loss over the throttle
 %% Initiera I/O abstraction layer %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N_e_manual = 0; N_e_step = 1; NINI = 800; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
+N_e_manual = 1; N_e_step = 1; NINI = 2500; NEND = NINI; NeST=30; NeSlope = 1; NeStartTime = 60; NeRampInit = 800;
 alpha_REF_manual = 0; alphaINI = 0.1; alphaEND = alphaINI; alphaST = 0;
 wg_REF_manual = 0; wgINI = 1; wgEND = wgINI; wgST=30;
-pedPos_manual = 0; pedINI = 0.3; pedEND = 0.3; pedST=80;
+pedPos_manual = 1; pedINI = 0; pedEND = 1; pedST=30;
 
 %%%%%%%%%%%%%%%%%
 %% Delmodell 1 %%
@@ -213,7 +213,7 @@ C_p = A\BMEP;
 epsilon = 0.01;     %För simulering
 
 KpThr = 1e-6; % Throttle controller feedback setup
-TiThr = 0.1;
+TiThr = 0.5;
 
 KpWg  = 1e-6; % Wastegate controller setup
 TiWg  = 1; %4
@@ -247,11 +247,13 @@ title('Tryckkvot plottat mot korrigerat luftmassflöde');
 legend('Modell','Map');
 
 %%
-plot(t_sim,p_im_ref,'b--',t_sim,p_im,'b',t_sim,p_ic,'m',t_sim,p_bef_thr_ref,'m--',t_sim,Tq_e,'r')
+figure;
+plot(t_sim,p_im_ref,'b--',t_sim,p_im,'b',t_sim,p_ic,'m',t_sim,p_bef_thr_ref,'m--')
 xlabel('Tid (s)');
 ylabel('Tryck (Pa)');
 title('Tryckplot för regleringingsvalidering');
 legend('p_{im,ref}','p_{im}','p_{ic}','p_{ic,ref}');
+pedINI = 0.7; pedEND = 0.9;
 
 %%
 plot(t_sim,VehicleSpeed,'r');
@@ -263,8 +265,25 @@ ylabel('Hastighet (km/h)');
 legend('Uppnådd hastighet','Begärd hastighet')
 
 %%
+plot(t_sim,VehicleSpeed);
+title('Prestandatest');
+xlabel('Tid (s)');
+ylabel('Hastighet (km/h)');
+grid on;
+
+%%
+figure;
 plot(t_sim,pressure_plot)
 xlabel('Tid (s)');
 ylabel('Tryck (Pa)');
 title('Tryckplot för pedalsteg');
 legend('p_{ic}','p_{im}','p_{t}','p_{em}');
+
+figure;
+plot(t_sim, Tq_e, 'r');
+xlabel('Tid (s)');
+ylabel('Vridmoment (Nm)');
+title('Motorns utmoment');
+max(Tq_e)
+
+

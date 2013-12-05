@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1286"
+    ComputedModelVersion    "1.1289"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -47,55 +47,16 @@ Model {
 	$ClassName		"Simulink.ExplorerBarInfo"
 	Visible			[1]
       }
-      Array {
-	Type			"Simulink.EditorInfo"
-	Dimension		5
-	Object {
-	  $ObjectID		  5
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "1594"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.32]
-	  Offset		  [12.143939393939377, 0.0]
-	}
-	Object {
-	  $ObjectID		  6
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "38"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [0.0, -9.5]
-	}
-	Object {
-	  $ObjectID		  7
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "2392"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-6.875, 0.0]
-	}
-	Object {
-	  $ObjectID		  8
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "695"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.5]
-	  Offset		  [1.799995112419345, 284.61666666666667]
-	}
-	Object {
-	  $ObjectID		  9
-	  IsActive		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "931"
-	  Extents		  [1884.0, 997.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-9.375, 0.0]
-	}
-	PropName		"EditorsInfo"
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		5
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"70"
+	Extents			[1884.0, 1000.0]
+	ZoomFactor		[1.0]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -105,9 +66,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "adalu838"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Dec 03 17:21:10 2013"
-  RTWModifiedTimeStamp	  307978766
-  ModelVersionFormat	  "1.%<AutoIncrement:1286>"
+  LastModifiedDate	  "Thu Dec 05 12:41:59 2013"
+  RTWModifiedTimeStamp	  308137463
+  ModelVersionFormat	  "1.%<AutoIncrement:1289>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -142,7 +103,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    10
+    $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "Project2"
     Array {
@@ -200,16 +161,16 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      11
+      $ObjectID		      7
       Version		      "1.12.1"
       Array {
 	Type			"Handle"
 	Dimension		8
 	Simulink.SolverCC {
-	  $ObjectID		  12
+	  $ObjectID		  8
 	  Version		  "1.12.1"
 	  StartTime		  "0.0"
-	  StopTime		  "600"
+	  StopTime		  "160"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -241,7 +202,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  13
+	  $ObjectID		  9
 	  Version		  "1.12.1"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -273,7 +234,7 @@ Model {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  14
+	  $ObjectID		  10
 	  Version		  "1.12.1"
 	  BlockReduction	  off
 	  BooleanDataType	  off
@@ -316,7 +277,7 @@ Model {
 	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  15
+	  $ObjectID		  11
 	  Version		  "1.12.1"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -406,7 +367,7 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  16
+	  $ObjectID		  12
 	  Version		  "1.12.1"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -443,7 +404,7 @@ Model {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  17
+	  $ObjectID		  13
 	  Version		  "1.12.1"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -458,7 +419,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  18
+	  $ObjectID		  14
 	  Version		  "1.12.1"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
@@ -473,7 +434,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  19
+	  $ObjectID		  15
 	  Version		  "1.12.1"
 	  SystemTargetFile	  "grt.tlc"
 	  GenCodeOnly		  off
@@ -522,7 +483,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      20
+	      $ObjectID		      16
 	      Version		      "1.12.1"
 	      ForceParamTrailComments off
 	      GenerateComments	      on
@@ -563,7 +524,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      21
+	      $ObjectID		      17
 	      Version		      "1.12.1"
 	      Array {
 		Type			"Cell"
@@ -638,11 +599,11 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    11
+    $ObjectID		    7
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    22
+    $ObjectID		    18
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -1226,7 +1187,7 @@ Model {
     TiledPaperMargins	    [0.196850, 0.196850, 0.196850, 0.196850]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "125"
+    ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "2876"
     Block {
@@ -1933,7 +1894,7 @@ Model {
       System {
 	Name			"Driver Model"
 	Location		[-8, -8, 1928, 1168]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2041,7 +2002,6 @@ Model {
 	  Position		  [650, 367, 680, 403]
 	  ZOrder		  -11
 	  NamePlacement		  "alternate"
-	  CurrentSetting	  "0"
 	}
 	Block {
 	  BlockType		  ManualSwitch
@@ -2050,7 +2010,6 @@ Model {
 	  Position		  [580, 142, 610, 178]
 	  ZOrder		  -12
 	  NamePlacement		  "alternate"
-	  CurrentSetting	  "0"
 	}
 	Block {
 	  BlockType		  ManualSwitch
@@ -2059,7 +2018,6 @@ Model {
 	  Position		  [650, 57, 680, 93]
 	  ZOrder		  -13
 	  NamePlacement		  "alternate"
-	  CurrentSetting	  "0"
 	}
 	Block {
 	  BlockType		  ManualSwitch
@@ -2068,7 +2026,6 @@ Model {
 	  Position		  [630, 262, 660, 298]
 	  ZOrder		  -14
 	  NamePlacement		  "alternate"
-	  CurrentSetting	  "0"
 	}
 	Block {
 	  BlockType		  MinMax
@@ -2601,7 +2558,7 @@ Model {
 	  System {
 	    Name		    "Boost\nCont"
 	    Location		    [-8, -8, 1928, 1168]
-	    Open		    on
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -3153,7 +3110,7 @@ Model {
 	      Position		      [715, 140, 745, 175]
 	      ZOrder		      6
 	      Floating		      off
-	      Location		      [881, 155, 1825, 1250]
+	      Location		      [881, 99, 1825, 1194]
 	      Open		      off
 	      NumInputPorts	      "2"
 	      List {
@@ -3172,7 +3129,6 @@ Model {
 		MarkerStyles		"none|none|none|none|none|none"
 	      }
 	      ShowLegends	      on
-	      LegendLocations	      "0.79643      0.9484     0.17161    0.018569\n0.70639     0.46895     0.26165    0.018569"
 	      YMin		      "-1.73472e-17~-0.07"
 	      YMax		      "0.24~6.93889e-18"
 	      SaveName		      "ScopeData18"
@@ -7390,7 +7346,7 @@ Model {
       System {
 	Name			"Engine"
 	Location		[-8, -8, 1928, 1168]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -7680,7 +7636,7 @@ Model {
 	  System {
 	    Name		    "Compressor"
 	    Location		    [-8, -8, 1928, 1168]
-	    Open		    on
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -15527,7 +15483,7 @@ Model {
 	  ZOrder		  23
 	  NamePlacement		  "alternate"
 	  Floating		  off
-	  Location		  [351, 235, 1322, 1001]
+	  Location		  [411, 259, 1382, 1025]
 	  Open			  off
 	  NumInputPorts		  "1"
 	  List {
@@ -15747,7 +15703,7 @@ Model {
 	  System {
 	    Name		    "Wastegate"
 	    Location		    [-8, -8, 1928, 1168]
-	    Open		    on
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -15825,7 +15781,7 @@ Model {
 	      System {
 		Name			"Subsystem1"
 		Location		[-8, -8, 1928, 1168]
-		Open			on
+		Open			off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -17543,8 +17499,6 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      on
-      LegendLocations	      "0.87906     0.90457    0.088983    0.061492\n0.87059     0.70822    0.097458    0.018569\n"
-      "0.87694     0.46895    0.091102    0.018569\n0.88542     0.23059    0.082627    0.018569"
       TimeRange		      "100             "
       YMin		      "120000~137.25~0.09073~5780.2"
       YMax		      "330000~142.25~0.09094~5781.7"
@@ -17614,7 +17568,6 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      on
-      LegendLocations	      "0.87906     0.90457    0.088983    0.061492"
       YMin		      "120000"
       YMax		      "330000"
       SaveName		      "ScopeData12"
